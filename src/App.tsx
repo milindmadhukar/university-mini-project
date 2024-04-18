@@ -41,10 +41,7 @@ function App() {
           <Route path="/users" exact>
             <Users
               users={users}
-              setUsers={(users: User[]) => {
-                console.log("setting users", users);
-                setUsers(users);
-              }}
+              setUsers={setUsers}
             />
           </Route>
         </div>
