@@ -2,17 +2,18 @@
 
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { milind } from "../assets/initalUsers";
 import Post from "../types/Post";
+import User from "../types/User";
 
 interface CreatePostProps {
   onPost: (post: Post) => void;
+  currentUser: User
 }
 
 
 // Image should be a previewable image file uploaded by the user not a url and make it text areas
 
-const CreatePost: React.FC<CreatePostProps> = ({ onPost }) => {
+const CreatePost: React.FC<CreatePostProps> = ({ onPost, currentUser }) => {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState<File | null>(null);
 
@@ -20,8 +21,8 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPost }) => {
     const post: Post = {
       id: uuidv4(),
       caption,
-      username: milind.username,
-      avatar: milind.avatar,
+      username: currentUser.username,
+      avatar: currentUser.avatar,
       imageUrl: URL.createObjectURL(image!),
       comments: [],
     };

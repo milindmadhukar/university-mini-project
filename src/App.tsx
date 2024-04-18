@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home/Home";
@@ -12,6 +12,13 @@ import Users from "./pages/Users/Users";
 function App() {
   const [posts, setPosts] = useState<Post[]>(initalPosts);
   const [users, setUsers] = useState<User[]>(initialUsers);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if (currentUser) {
+      setUsers([...users, currentUser]);
+    }
+  }, [currentUser]);
 
   return (
     <BrowserRouter>
@@ -26,6 +33,10 @@ function App() {
             onPost={(post: Post) => {
               setPosts([post, ...posts]);
             }}
+            currentUser={currentUser}
+            setCurrentUser={(user: User) => {
+              setCurrentUser(user);
+            }}
           />
         </div>
 
@@ -33,6 +44,7 @@ function App() {
           <Route path="/" exact>
             <Home
               posts={posts}
+              currentUser={currentUser}
               setPosts={(posts: Post[]) => {
                 setPosts(posts);
               }}
@@ -41,6 +53,7 @@ function App() {
           <Route path="/users" exact>
             <Users
               users={users}
+              currentUser={currentUser!}
               setUsers={(users: User[]) => {
                 console.log("setting users", users);
                 setUsers(users);

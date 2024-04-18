@@ -1,12 +1,12 @@
-import { milind } from "../../assets/initalUsers";
 import User from "../../types/User";
 
 interface UsersProps {
   users: User[];
+  currentUser: User;
   setUsers: (users: User[]) => void;
 }
 
-const Users: React.FC<UsersProps> = ({ users, setUsers }) => {
+const Users: React.FC<UsersProps> = ({ users, currentUser, setUsers }) => {
   return (
     <div className="grid grid-cols-3 gap-4">
       {users.map((user) => (
@@ -20,24 +20,24 @@ const Users: React.FC<UsersProps> = ({ users, setUsers }) => {
             </h4>
           </div>
           <div className="flex justify-center">
-            {user.id !== milind.id ? (
-              milind.following.includes(user.id) ? (
+            {user.id !== currentUser.id ? (
+              currentUser.following.includes(user.id) ? (
                 <button
                   onClick={() => {
-                    console.log("milind unfollows", user.username);
-                    const milindFollowing = milind.following.filter(
+                    console.log("currentUser unfollows", user.username);
+                    const currentUserFollowing = currentUser.following.filter(
                       (id) => id !== user.id,
                     );
 
                     const userFollowers = user.followers.filter(
-                      (id) => id !== milind.id,
+                      (id) => id !== currentUser.id,
                     );
 
                     const newUsers = users.map((u) => {
-                      if (u.id === milind.id) {
+                      if (u.id === currentUser.id) {
                         return {
                           ...u,
-                          following: milindFollowing,
+                          following: currentUserFollowing,
                         };
                       }
 
@@ -63,20 +63,24 @@ const Users: React.FC<UsersProps> = ({ users, setUsers }) => {
                   <button
                     type="button"
                     onClick={() => {
-                      const milindFollowers = milind.followers.concat(user.id);
-                      const userFollowing = user.following.concat(milind.id);
+                      const currentUserFollowing = currentUser.followers.concat(
+                        user.id,
+                      );
+                      const userFollowers = user.following.concat(
+                        currentUser.id,
+                      );
                       const newUsers = users.map((u) => {
-                        if (u.id === milind.id) {
+                        if (u.id === currentUser.id) {
                           return {
                             ...u,
-                            followers: milindFollowers,
+                            following: currentUserFollowing,
                           };
                         }
 
                         if (u.id === user.id) {
                           return {
                             ...u,
-                            following: userFollowing,
+                            followers: userFollowers,
                           };
                         }
 
