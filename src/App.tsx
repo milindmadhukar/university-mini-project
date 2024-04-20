@@ -53,6 +53,11 @@ function App() {
           <Route path="/users" exact>
             <Users
               users={users}
+              setUsers={(users: User[]) => {
+                console.log("setting users", users);
+                setUsers(users);
+              }}
+
               currentUser={currentUser!}
               setUsers={(users: User[]) => {
                 console.log("setting users", users);
