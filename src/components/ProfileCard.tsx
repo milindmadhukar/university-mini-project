@@ -1,43 +1,28 @@
 // Make a profile card using tailwind css that should contain a profile banner
 import React from "react";
+import User from "../types/User";
 
 interface ProfileCardProps {
-  name: string;
-  description: string;
-  image: string;
-  twitter: string;
-  github: string;
-  linkedin: string;
+  user: User;
 }
 
-const ProfileCard: React.FC<ProfileCardProps> = ({
-  name,
-  description,
-  image,
-  twitter,
-  github,
-  linkedin,
-}) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
   return (
     <div className="flex bg-white rounded-lg shadow-lg overflow-hidden">
       <div className="flex flex-col justify-center p-2 w-1/4">
-        <img
-          className="rounded-full"
-          src={image}
-          alt="image description"
-        />
+        <img className="rounded-full" src={user.avatar} alt="image description" />
       </div>
 
       <div className="p-6 w-3/4">
         {/* Name */}
-        <h2 className="text-xl font-semibold text-gray-800 mb-2">{name}</h2>
+        <h2 className="text-xl font-semibold text-gray-800 mb-2">{user.username}</h2>
 
         {/* Description */}
-        <p className="text-gray-600 mb-4">{description}</p>
+        <p className="text-gray-600 mb-4">{user.bio}</p>
 
         <div className="flex space-x-4 justify-center">
           <a
-            href={`https://twitter.com/${twitter}`}
+            href={`https://twitter.com/${user.twitter}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-gray-700"
@@ -53,7 +38,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           </a>
 
           <a
-            href={`https://github.com/${github}`}
+            href={`https://github.com/${user.github}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-gray-700"
@@ -73,7 +58,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
           </a>
 
           <a
-            href={`https://www.linkedin.com/${linkedin}`}
+            href={`https://www.linkedin.com/${user.linkedIn}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-gray-700"

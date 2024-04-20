@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import heartFilled from "../assets/images/heartfilled.svg";
 import heartOutline from "../assets/images/heartoutline.svg";
 import Post from "../types/Post";
+import User from "../types/User";
 
 interface PostComponentProps {
   post: Post;
   onLike: (id: string) => void;
   onComment: (id: string, comment: string) => void;
+  currentUser: User | null;
 }
 
-const PostCard: React.FC<PostComponentProps> = ({ post, onLike, onComment }) => {
+const PostCard: React.FC<PostComponentProps> = ({
+  post,
+  onLike,
+  onComment,
+  currentUser,
+}) => {
   const [newComment, setNewComment] = useState("");
 
   return (
@@ -77,25 +84,30 @@ const PostCard: React.FC<PostComponentProps> = ({ post, onLike, onComment }) => 
             ))}
           </div>
         )}
-        <div className=" flex mt-2 items-center">
-          <input
-            type="text"
-            placeholder="Add a comment..."
-            className="w-full p-2 border border-gray-300 rounded-lg"
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-          />
 
-          <button
-            className="bg-blue-500 text-white px-4 py-2 ml-2 rounded-lg"
-            onClick={() => {
-              onComment(post.id, newComment);
-              setNewComment("");
-            }}
-          >
-            Post
-          </button>
-        </div>
+        {currentUser ? (
+          <div className=" flex mt-2 items-center">
+            <input
+              type="text"
+              placeholder="Add a comment..."
+              className="w-full p-2 border border-gray-300 rounded-lg"
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+            />
+
+            <button
+              className="bg-blue-500 text-white px-4 py-2 ml-2 rounded-lg"
+              onClick={() => {
+                onComment(post.id, newComment);
+                setNewComment("");
+              }}
+            >
+              Post
+            </button>
+          </div>
+        ) : (
+          <> </>
+        )}
       </div>
     </div>
   );
