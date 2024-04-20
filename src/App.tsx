@@ -53,20 +53,16 @@ function App() {
           <Route path="/users" exact>
             <Users
               users={users}
-<<<<<<< HEAD
-              setUsers={setUsers}
-||||||| 8d737db
               setUsers={(users: User[]) => {
                 console.log("setting users", users);
                 setUsers(users);
               }}
-=======
+
               currentUser={currentUser!}
               setUsers={(users: User[]) => {
                 console.log("setting users", users);
                 setUsers(users);
               }}
->>>>>>> c57b2aac6570d0f6b9f2db2fbcc6498c6c34634f
             />
           </Route>
         </div>

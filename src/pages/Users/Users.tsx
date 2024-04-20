@@ -1,5 +1,5 @@
+
 import { Dispatch, SetStateAction, useState } from "react";
-import { milind } from "../../assets/initalUsers";
 import User from "../../types/User";
 
 interface UsersProps {
@@ -10,6 +10,7 @@ interface UsersProps {
 const Users: React.FC<UsersProps> = ({ users, setUsers }) => {
   const [local, setLocal] = useState<User[]>([...users]);
 
+const Users: React.FC<UsersProps> = ({ users, currentUser, setUsers }) => {
   return (
     <div className="grid grid-cols-3 gap-4">
       {local.map((user) => (
@@ -23,45 +24,6 @@ const Users: React.FC<UsersProps> = ({ users, setUsers }) => {
             </h4>
           </div>
           <div className="flex justify-center">
-            {/* {user.id !== milind.id && milind.following.includes(user.id) ? (
-              <button
-                onClick={() => {
-                  console.log("milind unfollows", user.username);
-                  const milindFollowing = milind.following.filter(
-                    (id) => id !== user.id
-                  );
-
-                  const userFollowers = user.followers.filter(
-                    (id) => id !== milind.id
-                  );
-
-                  const newUsers = users.map((u) => {
-                    if (u.id === milind.id) {
-                      return {
-                        ...u,
-                        following: milindFollowing,
-                      };
-                    }
-
-                    if (u.id === user.id) {
-                      return {
-                        ...u,
-                        followers: userFollowers,
-                      };
-                    }
-
-                    return u;
-                  });
-
-                  setUsers([...newUsers]);
-                }}
-                type="button"
-                className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-              >
-                Following
-              </button>
-            ) : user.id !== milind.id ? ( */}
-            {/* <> */}
             {user.id !== milind.id ? (
               <button
                 type="button"
