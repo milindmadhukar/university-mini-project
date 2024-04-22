@@ -16,4 +16,4 @@ https://github.com/milindmadhukar/university-mini-project.git
 
 ## ️️🛠️ Tools Used
 
-This project was written purely in Good Old Legacy [React](https://legacy.reactjs.org/)
+This project was written purely in Good Old Legacy [React](https://legacy.reactjs.org/) using [Vite](https://vitejs.dev/)
