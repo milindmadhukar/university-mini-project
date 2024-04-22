@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import User from "../../types/User";
+import { useHistory } from "react-router-dom";
 
 interface UsersProps {
   users: User[];
@@ -8,6 +9,13 @@ interface UsersProps {
 }
 
 const Users: React.FC<UsersProps> = ({ users, setUsers, currentUser }) => {
+
+  const history = useHistory()
+
+  if (!currentUser) {
+    history.push("/");
+  }
+
   return (
     <div className="grid grid-cols-3 gap-4">
       {users.map((user) => (

@@ -1,7 +1,8 @@
 import Post from "../types/Post";
 import mg1 from "./images/mg1.jpg";
 import mg2 from "./images/mg2.jpg";
-import { martingarrix, thicc__frog } from "./initalUsers";
+import max1 from "./images/max1.jpg";
+import { martingarrix, max, milind, thicc__frog } from "./initalUsers";
 
 const initalPosts: Post[] = [
   {
@@ -31,6 +32,21 @@ const initalPosts: Post[] = [
         username: thicc__frog.username,
         avatar: thicc__frog.avatar,
         content: "This is the best",
+      },
+    ],
+  },
+
+  {
+    id: "ec553fbb-c4f9-485c-b42a-5764ae8c4a92",
+    username: max.username,
+    avatar: max.avatar,
+    caption: "Shanghai 2024 🇨🇳 🙏",
+    imageUrl: max1,
+    comments: [
+      {
+        username: milind.username,
+        avatar: milind.avatar,
+        content: "DU DU DU DU MAX VERSTAPPEN!",
       },
     ],
   },
