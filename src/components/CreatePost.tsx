@@ -1,5 +1,3 @@
-// Create post component that has a caption an image upload and a post button
-
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Post from "../types/Post";
@@ -9,9 +7,6 @@ interface CreatePostProps {
   onPost: (post: Post) => void;
   currentUser: User
 }
-
-
-// Image should be a previewable image file uploaded by the user not a url and make it text areas
 
 const CreatePost: React.FC<CreatePostProps> = ({ onPost, currentUser }) => {
   const [caption, setCaption] = useState("");
