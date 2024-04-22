@@ -1,15 +1,15 @@
+import User from "./User";
+
 export default interface Post {
   id: string;
-  username: string;
-  avatar: string;
+  user: User
   caption: string;
   imageUrl: string;
   comments:
-  | {
-    username: string;
-    content: string;
-    avatar: string;
-  }[]
-  | null;
+    | {
+        user: User;
+        content: string;
+      }[]
+    | null;
   isLiked?: boolean;
 }

@@ -23,12 +23,12 @@ const PostCard: React.FC<PostComponentProps> = ({
     <div className="bg-white rounded-lg shadow-md">
       <div className="flex items-center p-4">
         <img
-          src={post.avatar}
-          alt={`${post.username} avatar`}
+          src={post.user.avatar}
+          alt={`${post.user.username} avatar`}
           className="w-10 h-10 rounded-full"
         />
         <div className="ml-3">
-          <p className="text-sm font-semibold">{post.username}</p>
+          <p className="text-sm font-semibold">{post.user.username}</p>
         </div>
       </div>
 
@@ -64,7 +64,7 @@ const PostCard: React.FC<PostComponentProps> = ({
           </div>
         </div>
         <p className="mt-2 text-sm">
-          <span className="font-semibold mr-1">{post.username}</span>
+          <span className="font-semibold mr-1">{post.user.username}</span>
           {post.caption}
         </p>
         {post.comments!.length > 0 && (
@@ -72,12 +72,12 @@ const PostCard: React.FC<PostComponentProps> = ({
             {post.comments?.map((comment, index) => (
               <div key={index} className="flex items-center mt-2">
                 <img
-                  src={comment.avatar}
+                  src={comment.user.avatar}
                   alt={"avatar"}
                   className="w-6 h-6 rounded-full"
                 />
                 <p className="ml-2 text-sm">
-                  <span className="font-semibold mr-1">{comment.username}</span>
+                  <span className="font-semibold mr-1">{comment.user.username}</span>
                   {comment.content}
                 </p>
               </div>

@@ -28,8 +28,7 @@ const Home: React.FC<HomeProps> = ({ posts, setPosts, currentUser }) => {
             const newPosts = posts.map((post) => {
               if (post.id == id) {
                 post.comments!.push({
-                  username: currentUser!.username,
-                  avatar: currentUser!.avatar,
+                  user: currentUser!,
                   content: comment,
                 });
               }

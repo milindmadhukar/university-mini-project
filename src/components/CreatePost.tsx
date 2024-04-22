@@ -16,8 +16,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ onPost, currentUser }) => {
     const post: Post = {
       id: uuidv4(),
       caption,
-      username: currentUser.username,
-      avatar: currentUser.avatar,
+      user: currentUser,
       imageUrl: URL.createObjectURL(image!),
       comments: [],
     };
