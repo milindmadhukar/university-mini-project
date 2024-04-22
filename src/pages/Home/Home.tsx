@@ -1,5 +1,3 @@
-// A home component that renders the post feed
-
 import PostCard from "../../components/PostCard";
 import Post from "../../types/Post";
 import User from "../../types/User";

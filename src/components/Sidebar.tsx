@@ -1,5 +1,3 @@
-// Make a side bar component for a social media platform. It contains a profile component and a post content component
-
 import React from "react";
 
 import ProfileCard from "./ProfileCard";
